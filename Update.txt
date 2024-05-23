@@ -1,0 +1,31 @@
+package jdbc.in.com;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Update {
+
+	public static void main(String[] args) {
+      DatabaseConnector obj = new DatabaseConnector();
+        
+        PreparedStatement ps = null; 
+        Connection con = null;
+        
+        try {
+            String query = "Update details set Name='Paru' where id=1";
+            con = obj.dbconnect();
+            ps = con.prepareStatement(query);
+            
+            int i = ps.executeUpdate();
+            if (i != 0) {
+                System.out.println("Success");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        
+        }
+
+	}
+
+}
